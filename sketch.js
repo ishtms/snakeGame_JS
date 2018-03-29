@@ -1,53 +1,45 @@
-var ballContainer = [];
+var snake;
 
-function randomXYGenerator(_limit) {
-    return random(20, _limit);
+function mousePressed() {
+    snake.currLength += 5;
 }
 
-function randomRadiusGenerator() {
-    return random(10, 30);
-}
-
-function randomSpeedGenerator() {
-    var speed = random(-1, 1);
-    return floor(speed) == 0 ? 1 : speed;
-}
-
-function randomColorGenerator() {
-    return color(random(0, 255), random(0, 255), random(0, 255));
-}
-
-function drawBalls() {
-    for (var index = 0; index < ballContainer.length; index++) {
-        ballContainer[index].update();
+function keyPressed(key) {
+    switch (key.code) {
+        case "ArrowRight":
+            moveSnake("RIGHT");
+            break;
+        case "ArrowLeft":
+            moveSnake("LEFT");
+            break;
+        case "ArrowUp":
+            moveSnake("TOP")
+            break;
+        case "ArrowDown":
+            moveSnake("BOTTOM")
+            break;
+            alert("Something is wrong with the event handling in sketch.js line 17.")
     }
+}
+
+function moveSnake(_direction) {
+    snake.direction = _direction;
 }
 
 function setup() {
+    var body = select('body');
+    body.style('overflow', 'none')
     createCanvas(window.innerWidth, window.innerHeight);
-    for (var index = 0; index < 7; index++) {
-        ballContainer.push(
-            new Ball(
-                randomXYGenerator(width),
-                randomXYGenerator(height),
-                randomRadiusGenerator(),
-                randomSpeedGenerator(),
-                randomSpeedGenerator(),
-                randomColorGenerator()
-            )
-        );
-    }
+    background(123, 22, 230)
+    snake = new Snake(width / 2, height / 2, 30, color(23, 44, 123));
 }
 
-var count = 0;
-
 function draw() {
-    background(123)
-    for (var index = 0; index < ballContainer.length - 1; index++) {
-        for (var inner = index + 1; inner < ballContainer.length; inner++) {
-            ballContainer[index].checkCollision(ballContainer[inner])
-        }
+    background(123, 22, 230)
+    if (finished) {
+        snake = new Snake(width / 2, height / 2, 30, color(23, 44, 123));
+        finished = false;
     }
-    drawBalls();
+    snake._draw();
 
 }
