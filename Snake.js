@@ -86,16 +86,13 @@ var Snake = function(_xPos, _yPos, _width, _color) {
 
         if (this._history[0].x < 0 + this._width / 2 || this._history[0].x + this._width / 2 > width || this._history[0].y < 0 + this._width / 2 || this._history[0].y + this._width / 2 > height) {
             finishGame();
-            alert("Thank you for playing this game, your score is " + this.currLength * 28);
+            alert("Thank you for playing this game, your score is " + this.currLength * floor(random(22, 28)));
         }
-        // console.log(this._history[0].x + " ---- " + this._history[0].y)
         for (var index = 0; index < this._history.length; index++) {
-            rectMode(CENTER);
             fill(this._color);
             noStroke();
-            rect(this._history[index].x, this._history[index].y, this._width, this._width)
+            ellipse(this._history[index].x, this._history[index].y, this._width, this._width)
         }
-        console.log(this.currLength + " <- Curr length | History length -> " + this._history.length)
     }
 
     this.update = function() {
