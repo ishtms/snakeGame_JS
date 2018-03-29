@@ -99,12 +99,5 @@ var Snake = function(_xPos, _yPos, _width, _color) {
         if (!finished) {
             this._draw();
         }
-        for (var index = 0; index < this._history.length; index++) {
-
-        }
-    }
-
-    this.eatFood = function() {
-
     }
 }
