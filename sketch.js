@@ -9,7 +9,6 @@ function preload() {
         y: random(30, height - 30)
     }
     myParagraph = select('#para');
-    alert(myParagraph)
 }
 
 function keyPressed(key) {
