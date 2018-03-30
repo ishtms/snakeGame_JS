@@ -75,29 +75,28 @@ function draw() {
     }
     snake._draw();
 }
-var returnFeaturedName = function() {
-    console.log(speed)
-    if (speed >= 0) {
+function returnFeaturedName() {
+    if (speed == 0) {
         data = "GO GO GO!";
-    } else if (speed > 1) {
+    } else if (speed <= 1) {
         data = "GREAT START";
-    } else if (speed > 2) {
+    } else if (speed <= 2) {
         data = "DOING GREAT";
-    } else if (speed > 3) {
+    } else if (speed <= 3) {
         data = "AWESOME";
-    } else if (speed > 4) {
-        data = "WICKET STREAK";
-    } else if (speed > 5) {
+    } else if (speed <= 4) {
+        data = "WICKED STREAK";
+    } else if (speed <= 5) {
         data = "OMG!!!!";
-    } else if (speed > 6) {
+    } else if (speed <= 6) {
         data = "MONSTROUS";
-    } else if (speed > 7) {
+    } else if (speed <= 7) {
         data = "BAZINGAAAA";
-    } else if (speed > 8) {
+    } else if (speed <= 8) {
         data = "GODLIKE!!!"
-    } else if (speed > 9) {
+    } else if (speed <= 9) {
         data = "YOU'RE CRAZY!!";
-    } else if(speed >= 10){
+    } else{
         data = "INHUMAN!!!!";
     }
 }
